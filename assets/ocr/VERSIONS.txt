@@ -1,0 +1,14 @@
+Offline OCR assets prepared for the NBCare local demo.
+
+Tesseract.js: 7.0.0 (npm latest tag checked on2026-10-28)
+Package: https://www.npmjs.com/package/tesseract.js/v/7.0.0
+Maintainer repository: https://github.com/naptha/tesseract.js
+License: Apache-2.0; TESSERACT-JS-LICENSE.txt
+
+Tesseract.js-core: 7.0.0 (matches tesseract.js7.0.0 dependency ^7.0.0)
+Package: https://www.npmjs.com/package/tesseract.js-core/v/7.0.0
+License: Apache-2.0; core/LICENSE.txt
+All six standalone *.wasm.js variants are included.
+
+Language files: eng.traineddata and vie.traineddata copied from existing workspace resources.
+Initialization with Tesseract.js7.0.0 and vie+eng succeeded in the local Node runtime.

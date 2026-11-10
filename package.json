@@ -1,0 +1,23 @@
+{
+  "name": "nbcare-clone",
+  "version": "2.0.0",
+  "description": "NBCare Clone - Dược sĩ Lâm sàng ảo & Bình đơn thuốc (Google Vertex Agent / Gemini)",
+  "type": "module",
+  "main": "server.mjs",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs"
+  },
+  "keywords": [
+    "nbcare",
+    "clinical-pharmacy",
+    "vertex-ai",
+    "prescription-review",
+    "drug-interactions"
+  ],
+  "author": "Khoa Dược - BVĐK Tỉnh Ninh Bình",
+  "license": "ISC",
+  "dependencies": {
+    "isomorphic-git": "^1.44.12"
+  }
+}

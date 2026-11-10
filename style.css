@@ -1,0 +1,601 @@
+/* ========================================================================
+ * NBCare & DrugView Ninh Bình — UI/UX Pro Max Design System
+ * Principles: Clinical clarity, WCAG AA Accessibility, 4pt/8pt Rhythm,
+ * Hospital Navy & Deep Slate, Responsive 44px+ touch targets, Print-ready.
+ * ====================================================================== */
+
+:root {
+  color-scheme: light;
+  
+  /* Brand Tokens - DrugView Ninh Bình */
+  --c-navy-900: #052749;
+  --c-navy-800: #073a6a;
+  --c-navy-700: #083d6f;
+  --c-navy-600: #0a4a85;
+  --c-navy-500: #0b5394;
+  --c-navy-400: #3578ba;
+  --c-navy-100: #d5e3f8;
+  --c-navy-50:  #eaf1fb;
+
+  /* Clinical Alerts */
+  --c-red-bg:     #fff2f2;
+  --c-red-border: #ac3035;
+  --c-red-text:   #8a1f24;
+
+  --c-amber-bg:     #fff8e9;
+  --c-amber-border: #a96300;
+  --c-amber-text:   #784600;
+
+  --c-green-bg:     #eff9f4;
+  --c-green-border: #157356;
+  --c-green-text:   #0e523d;
+
+  /* Surfaces & Typography */
+  --c-bg:        #f3f7fb;
+  --c-surface:   #ffffff;
+  --c-ink:       #102e4a;
+  --c-muted:     #526982;
+  --c-line:      #d8e4ef;
+  --c-line-soft: #eaf0f7;
+
+  /* Shadows */
+  --sh-sm: 0 2px 6px rgba(7, 58, 106, 0.06);
+  --sh-md: 0 4px 14px rgba(7, 58, 106, 0.08);
+  --sh-lg: 0 10px 28px rgba(7, 58, 106, 0.12);
+
+  /* Radii */
+  --rad-sm: 6px;
+  --rad-md: 10px;
+  --rad-lg: 16px;
+  --rad-pill: 999px;
+
+  /* Fonts */
+  --ff-main: "Be Vietnam Pro", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--ff-main); }
+body { background: var(--c-bg); color: var(--c-ink); min-height: 100vh; display: flex; flex-direction: column; font-size: 15px; line-height: 1.55; }
+
+/* Focus styles for WCAG AA */
+:focus-visible { outline: 3px solid var(--c-navy-500); outline-offset: 2px; }
+
+/* APP HEADER */
+.app-header {
+  background: var(--c-surface);
+  border-bottom: 1px solid var(--c-line);
+  padding: 0.75rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  box-shadow: var(--sh-sm);
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.hospital-logo {
+  height: 46px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--c-navy-500);
+  text-transform: uppercase;
+}
+
+.brand-main-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--c-navy-800);
+  line-height: 1.2;
+}
+
+.brand-sub {
+  font-size: 0.78rem;
+  color: var(--c-muted);
+}
+
+/* NAVIGATION TABS */
+.nav-tab-container {
+  display: flex;
+  background: var(--c-navy-50);
+  padding: 4px;
+  border-radius: var(--rad-pill);
+  border: 1px solid var(--c-line);
+  gap: 4px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 8px 18px;
+  border-radius: var(--rad-pill);
+  font-size: 0.88rem;
+  font-weight: 650;
+  color: var(--c-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 40px;
+}
+
+.tab-btn:hover { color: var(--c-navy-800); }
+.tab-btn.active {
+  background: var(--c-surface);
+  color: var(--c-navy-600);
+  box-shadow: var(--sh-sm);
+}
+
+/* LIVE STATUS BADGE */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--c-navy-50);
+  border: 1px solid var(--c-navy-100);
+  padding: 5px 12px;
+  border-radius: var(--rad-pill);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--c-navy-700);
+}
+
+.status-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+/* MAIN VIEWPORT */
+.app-container {
+  max-width: 1520px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.view-panel { display: none; flex: 1; }
+.view-panel.active { display: flex; flex-direction: column; }
+
+/* ========================================================================
+ * MODULE 1: CHATBOT DƯỢC LÂM SÀNG
+ * ====================================================================== */
+.chatbot-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 20px;
+  height: calc(100vh - 120px);
+}
+
+.chat-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  border-radius: var(--rad-lg);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--sh-md);
+  overflow: hidden;
+}
+
+.chat-card-header {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--c-line-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+}
+
+.source-selectors { display: flex; gap: 8px; }
+.source-pill {
+  border: 1px solid var(--c-line);
+  background: var(--c-surface);
+  color: var(--c-muted);
+  padding: 6px 14px;
+  border-radius: var(--rad-pill);
+  font-size: 0.82rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.source-pill.active {
+  background: var(--c-navy-500);
+  color: #fff;
+  border-color: var(--c-navy-500);
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #fafcfe;
+}
+
+.message-row { display: flex; gap: 12px; max-width: 88%; }
+.message-row.user { align-self: flex-end; flex-direction: row-reverse; }
+.message-row.assistant { align-self: flex-start; }
+
+.chat-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  box-shadow: var(--sh-sm);
+}
+.message-row.user .chat-avatar { background: var(--c-navy-600); color: #fff; }
+.message-row.assistant .chat-avatar { background: var(--c-navy-50); color: var(--c-navy-800); border: 1px solid var(--c-navy-100); }
+
+.message-content {
+  background: #fff;
+  border: 1px solid var(--c-line);
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  box-shadow: 0 1px 4px rgba(7, 58, 106, 0.04);
+}
+.message-row.user .message-content {
+  background: var(--c-navy-600);
+  color: #fff;
+  border-color: var(--c-navy-600);
+}
+
+.suggest-prompt-bar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 20px;
+  border-top: 1px solid var(--c-line-soft);
+  background: #fff;
+}
+.suggest-chip {
+  white-space: nowrap;
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: var(--rad-pill);
+  border: 1px solid var(--c-line);
+  background: var(--c-navy-50);
+  color: var(--c-navy-700);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.suggest-chip:hover { background: var(--c-navy-100); }
+
+.chat-composer {
+  padding: 12px 20px;
+  border-top: 1px solid var(--c-line);
+  background: #fff;
+}
+
+.ocr-attached-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--c-amber-bg);
+  border: 1px solid var(--c-amber-border);
+  color: var(--c-amber-text);
+  padding: 6px 12px;
+  border-radius: var(--rad-sm);
+  font-size: 0.82rem;
+  margin-bottom: 8px;
+}
+
+.composer-form { display: flex; gap: 8px; align-items: flex-end; }
+.composer-textarea {
+  flex: 1;
+  resize: none;
+  min-height: 46px;
+  max-height: 130px;
+  border: 1px solid var(--c-line);
+  border-radius: var(--rad-md);
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  outline: none;
+  line-height: 1.45;
+}
+.composer-textarea:focus { border-color: var(--c-navy-500); }
+
+.action-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--rad-md);
+  border: 1px solid var(--c-line);
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-muted);
+  transition: all 0.15s;
+}
+.action-btn:hover { color: var(--c-navy-600); border-color: var(--c-navy-500); }
+
+.btn-primary-send {
+  background: var(--c-navy-600);
+  color: #fff;
+  border-color: var(--c-navy-600);
+}
+.btn-primary-send:hover { background: var(--c-navy-800); }
+
+/* SIDE EVIDENCE DRAWER */
+.evidence-card-drawer {
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  border-radius: var(--rad-lg);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--sh-md);
+  overflow-y: auto;
+}
+
+.drawer-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--c-navy-800);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--c-line);
+}
+
+.source-item {
+  border: 1px solid var(--c-line);
+  border-radius: var(--rad-md);
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #fafcfe;
+}
+.source-item h5 { font-size: 0.88rem; color: var(--c-navy-800); margin-bottom: 4px; }
+.source-item p { font-size: 0.78rem; color: var(--c-muted); margin-bottom: 6px; }
+.source-item a { color: var(--c-navy-500); text-decoration: none; font-size: 0.78rem; font-weight: 600; }
+.source-item a:hover { text-decoration: underline; }
+
+/* ========================================================================
+ * MODULE 2: BÌNH ĐƠN & THẨM ĐỊNH ĐƠN THUỐC
+ * ====================================================================== */
+.review-workspace {
+  display: grid;
+  grid-template-columns: 460px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.intake-card, .report-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-line);
+  border-radius: var(--rad-lg);
+  padding: 22px;
+  box-shadow: var(--sh-md);
+}
+
+.intake-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.section-tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.section-tag h3 {
+  font-size: 0.92rem;
+  font-weight: 750;
+  color: var(--c-navy-800);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.input-label { display: flex; flex-direction: column; gap: 4px; font-size: 0.82rem; font-weight: 600; color: var(--c-muted); }
+.custom-input {
+  width: 100%;
+  min-height: 42px;
+  padding: 8px 12px;
+  border: 1px solid var(--c-line);
+  border-radius: var(--rad-sm);
+  font-size: 0.92rem;
+  background: #fff;
+}
+.custom-input:focus { border-color: var(--c-navy-500); }
+
+/* Medicine Table */
+.med-table-wrapper {
+  border: 1px solid var(--c-line);
+  border-radius: var(--rad-sm);
+  overflow: hidden;
+}
+.med-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+.med-table th { background: var(--c-navy-50); padding: 8px 10px; text-align: left; font-weight: 700; color: var(--c-navy-800); }
+.med-table td { padding: 6px 8px; border-top: 1px solid var(--c-line-soft); }
+.med-table input {
+  width: 100%;
+  border: 1px solid transparent;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 0.84rem;
+}
+.med-table input:focus { border-color: var(--c-navy-400); background: #fff; }
+
+.btn-add-row {
+  background: var(--c-navy-50);
+  color: var(--c-navy-600);
+  border: 1px dashed var(--c-navy-400);
+  border-radius: var(--rad-sm);
+  padding: 8px;
+  font-size: 0.84rem;
+  font-weight: 650;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+}
+.btn-add-row:hover { background: var(--c-navy-100); }
+
+.btn-run-review {
+  background: var(--c-navy-700);
+  color: #fff;
+  border: none;
+  border-radius: var(--rad-md);
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s;
+  box-shadow: var(--sh-sm);
+  min-height: 48px;
+}
+.btn-run-review:hover { background: var(--c-navy-900); }
+
+/* CLINICAL REPORT PANEL */
+.report-card {
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.report-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--c-line);
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+.report-topbar h2 { font-size: 1.25rem; font-weight: 800; color: var(--c-navy-800); }
+.report-topbar p { font-size: 0.82rem; color: var(--c-muted); }
+
+.report-btn-group { display: flex; gap: 8px; }
+.btn-outline {
+  border: 1px solid var(--c-line);
+  background: #fff;
+  color: var(--c-navy-700);
+  padding: 6px 14px;
+  border-radius: var(--rad-sm);
+  font-size: 0.84rem;
+  font-weight: 650;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 38px;
+}
+.btn-outline:hover { background: var(--c-navy-50); border-color: var(--c-navy-400); }
+
+/* Clinical Findings Styles */
+.clinical-report-view h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--c-navy-800);
+  margin-top: 20px;
+  margin-bottom: 8px;
+  border-left: 3px solid var(--c-navy-500);
+  padding-left: 8px;
+}
+
+.finding-box {
+  border-radius: var(--rad-md);
+  padding: 14px 18px;
+  margin: 12px 0;
+  border-left: 5px solid transparent;
+  font-size: 0.93rem;
+  line-height: 1.6;
+}
+
+.finding-box.red {
+  background: var(--c-red-bg);
+  border-left-color: var(--c-red-border);
+  color: #3b0709;
+}
+.finding-box.yellow {
+  background: var(--c-amber-bg);
+  border-left-color: var(--c-amber-border);
+  color: #3f2000;
+}
+.finding-box.green {
+  background: var(--c-green-bg);
+  border-left-color: var(--c-green-border);
+  color: #06281e;
+}
+
+/* Toast */
+.app-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--c-navy-900);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: var(--rad-md);
+  font-size: 0.88rem;
+  font-weight: 600;
+  box-shadow: var(--sh-lg);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: slideUp 0.25s ease-out;
+}
+@keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* PRINT STYLESHEET (Chuẩn in bệnh án A4) */
+@media print {
+  .app-header, .intake-card, .suggest-prompt-bar, .report-topbar button, .nav-tab-container, .status-badge { display: none !important; }
+  body { background: #fff; color: #000; font-size: 12pt; }
+  .app-container { padding: 0; margin: 0; max-width: 100%; }
+  .review-workspace { grid-template-columns: 1fr; }
+  .report-card { border: none; box-shadow: none; padding: 0; }
+  .finding-box { border-left-width: 3px; page-break-inside: avoid; }
+}
+
+/* MOBILE RESPONSIVE (UI UX Pro Max breakpoint guidelines) */
+@media (max-width: 992px) {
+  .chatbot-grid { grid-template-columns: 1fr; height: auto; }
+  .evidence-card-drawer { display: none; }
+  .review-workspace { grid-template-columns: 1fr; }
+  .intake-card { max-height: none; }
+  .app-header { flex-wrap: wrap; gap: 10px; padding: 10px 14px; }
+  .nav-tab-container { order: 3; width: 100%; justify-content: center; }
+}

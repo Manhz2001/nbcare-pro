@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000">
+<rect width="1400" height="1000" fill="white"/>
+<rect x="65" y="70" width="1270" height="850" rx="10" fill="white" stroke="#d7e2ec" stroke-width="3"/>
+<g fill="#183e5d" font-family="Arial, sans-serif"><text x="130" y="180" font-size="40" font-weight="bold">ANH MAU THU NHAN DANG CHU</text><path d="M130 225h1130" stroke="#d7e2ec" stroke-width="3"/>
+<text x="130" y="370" font-size="87" font-weight="bold">PARACETAMOL</text><text x="130" y="490" font-size="80">500 mg</text><text x="130" y="610" font-size="49">Hop 10 vi x 10 vien</text>
+<text x="130" y="770" font-size="32">Du lieu gia lap de thu OCR, khong phai y lenh.</text><text x="130" y="835" font-size="32">Vui long kiem tra lai chu nhan dang.</text></g></svg>
