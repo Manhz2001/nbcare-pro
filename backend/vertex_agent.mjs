@@ -5,10 +5,16 @@ const FALLBACK_EXPRESS_KEY = Buffer.from('QVEuQWI4Uk42S01ETEhlMmFQeXhvZFBuSjRaTX
 
 // Hỗ trợ cấu hình Vertex AI Express Key, API Key chuẩn, hoặc Vertex Cloud Project
 function getVertexConfig() {
-  const apiKey = (process.env.VERTEX_API_KEY || process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY || FALLBACK_EXPRESS_KEY).trim();
+  let apiKey = (process.env.VERTEX_API_KEY || '').trim();
+  if (!apiKey && process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY.startsWith('AQ.')) {
+    apiKey = process.env.GEMINI_API_KEY.trim();
+  }
+  if (!apiKey) {
+    apiKey = FALLBACK_EXPRESS_KEY;
+  }
   const project = (process.env.GOOGLE_CLOUD_PROJECT || '').trim();
   const location = (process.env.GOOGLE_CLOUD_LOCATION || 'us-central1').trim();
-  const useVertex = process.env.GOOGLE_GENAI_USE_VERTEXAI === 'true' || Boolean(project) || apiKey.startsWith('AQ.');
+  const useVertex = true;
 
   return { apiKey, project, location, useVertex, model: DEFAULT_MODEL };
 }
