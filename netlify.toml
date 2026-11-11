@@ -5,6 +5,9 @@
 [build.environment]
   NODE_VERSION = "22"
 
+[functions]
+  included_files = ["data/**", "backend/**"]
+
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/api/:splat"
